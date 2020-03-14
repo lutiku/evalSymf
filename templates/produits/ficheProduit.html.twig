@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block title %}Fiche Produit{% endblock %}
+
+{% block body %}
+
+    <h1 class="titreficheproduit"> {{ produit.nom|capitalize }}</h1>
+
+    {% if produit is not empty %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-8">
+            <!-- Card -->
+            <div class="card">
+
+                <!-- Card image -->
+                <img class="card-img-top" src="{{ produit.photo }}" alt="Card image cap">
+
+                <!-- Card content -->
+                <div class="card-body">
+
+                    <!-- Title -->
+                    <h4 class="card-title"><a></a></h4>
+                    <!-- Text -->
+                    <p class="card-text">Il y'a {{ produit.quantite }} {% if produit|length < 1 %}produit{% else %} produits {% endif %}en stock</p>
+                    <p class="card-text">Son prix unitaire est de {{ produit.prix|number_format(2, '.', ',') }} €</p>
+                    <!-- Button -->
+                    <a href="{{path("removeProduits", {id: produit.id})}}"><button value="{{ produit.id}}" type="button" class="btn btn-danger">Supprimer</button></a>
+
+                </div>
+
+            </div>
+            <!-- Card -->
+        </div>
+
+    {% endif %}
+        <div class="col-8">
+            {{ form_start(formPaniers) }}
+            {{ form_row(formPaniers.quantite, {'attr': {'class': 'form-control'}}) }}
+            {{ form_end(formPaniers) }}
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+
+

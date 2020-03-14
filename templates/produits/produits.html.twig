@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Produits{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-8">
+            {% if produits is not empty %}
+                <table class="table">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Photo</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Quantité</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Fiche Produit</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for produit in produits %}
+                        <tr>
+                            <th scope="row"> <img src="{{ produit.photo }}"/> </th>
+                            <td>{{ produit.nom }}</td>
+                            <td>{{ produit.quantite }}</td>
+                            <td>{{ produit.prix }}</td>
+                            <td><a href="{{ path('ficheProduit', {id: produit.id}) }}"><button value="{{ produit.id}}" type="button" class="btn btn-primary">Voir</button></a></td>
+
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+
+                {% else %}
+                <p>Il n'y a aucun produit enregistré</p>
+            {% endif %}
+
+        </div>
+        <div class="col-4">
+            {{ form_start(formProduits) }}
+            {{ form_row(formProduits.nom, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(formProduits.photo, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(formProduits.quantite, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(formProduits.prix, {'attr': {'class': 'form-control'}}) }}
+            {{form_end(formProduits)  }}
+        </div>
+    </div>
+</div>
+{% endblock %}

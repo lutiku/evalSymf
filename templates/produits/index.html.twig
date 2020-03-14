@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProduitsController!{% endblock %}
+
+{% block body %}
+
+{% if paniers is not empty %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-8">
+            <table class="table">
+                <thead >
+                <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Quantité commandée</th>
+                    <th scope="col">Montant</th>
+                    <th scope="col">Suppression produit</th>
+                    <th></th>
+
+                </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% for panier in paniers %}
+                    <tr>
+                        <th scope="row">{{ panier.produit.nom }}</th>
+                        <td>{{ panier.quantite }}</td>
+                        <td>--</td>
+                        <td><a href="{{path("remove", {id: panier.id})}}"><button value="{{ panier.id}}" type="button" class="btn btn-danger">Supprimer</button></a></td>
+                        <td>ajouté le {{ panier.dateajout|date('d/m/y') }}</td>
+
+                    </tr>
+
+                {% endfor %}
+
+
+
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-info btn-rounded">{{ paniers|length }}</button>
+
+        </div>
+
+        <div class="col-4">
+
+        </div>
+    </div>
+</div>
+    {% else %}
+<div class="container mt-5">
+
+    <p>Il n'y a pas encore de produits dans le panier</p>
+    <a href="{{ path('produits') }}"><button  type="button" class="btn btn-primary">Voir les Produits</button></a>
+
+</div>
+    {% endif %}
+
+{% endblock %}
