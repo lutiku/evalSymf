@@ -27,7 +27,7 @@
                     <tr>
                         <th scope="row">{{ panier.produit.nom }}</th>
                         <td>{{ panier.quantite }}</td>
-                        <td>--</td>
+                        <td>{{ prixColonne }}</td>
                         <td><a href="{{path("remove", {id: panier.id})}}"><button value="{{ panier.id}}" type="button" class="btn btn-danger">{% trans from "message" %}Supprimer{% endtrans %}</button></a></td>
                         <td>{% trans from "message" %}ajouté le {% endtrans %} {{ panier.dateajout|date('d/m/y') }}</td>
 

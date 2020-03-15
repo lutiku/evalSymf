@@ -17,7 +17,7 @@ class Panier
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Produit", inversedBy="paniers")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Produit", inversedBy="paniers", cascade={"remove"})
      */
     private $produit;
 

@@ -131,24 +131,29 @@ class ProduitsController extends AbstractController
         $totalQuantite=0;
         $totalMontant=0;
 
+
         foreach ($PanierRepository as $panier){
             $totalQuantite+= $panier->getQuantite();
             $totalMontant+=$panier->getProduit()->getPrix();
             $prix = $totalQuantite+$totalMontant;
 
 
+
+            $UnitaireQuantite = $panier->getQuantite();
+            $UnitairePrix = $panier->getProduit()->getPrix() ;
+
+
+            $prixUnitaire =  $UnitairePrix * $UnitaireQuantite;
+
+
         }
-
-
-
-
 
 
         return $this->render('produits/index.html.twig', [
             'controller_name' => 'ProduitsController',
             'paniers'=>$PanierRepository,
             'montant' =>$prix,
-            /*'quantite' =>  $totalMontant,*/
+            'prixColonne' =>  $prixUnitaire,
             'quantite' =>$totalQuantite
 
 
@@ -168,6 +173,7 @@ class ProduitsController extends AbstractController
         $entityManager->remove($produit);
         $entityManager->flush();
 
+
         return $this->redirectToRoute('accueil');
 
     }
@@ -180,8 +186,10 @@ class ProduitsController extends AbstractController
     public function removeProduits($id, EntityManagerInterface $entityManager)
     {
         $produits = $this->getDoctrine()->getRepository(Produit::class)->find($id) ;
-        $produits->getPaniers()->getPrix();
+       $panier = $this->getDoctrine()->getRepository(Panier::class)->find($id);
         $entityManager->remove($produits);
+
+
         $entityManager->flush();
         return $this->redirectToRoute('produits') ;
     }
