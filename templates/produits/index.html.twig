@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-8">
             <table class="table">
-                <thead >
+                <thead>
                 <tr>
                     <th scope="col">{% trans from "message" %}Nom{% endtrans %}</th>
                     <th scope="col">{% trans from "message" %}Quantité commandée{% endtrans %}</th>
@@ -27,7 +27,7 @@
                     <tr>
                         <th scope="row">{{ panier.produit.nom }}</th>
                         <td>{{ panier.quantite }}</td>
-                        <td>{{ montant }}</td>
+                        <td>--</td>
                         <td><a href="{{path("remove", {id: panier.id})}}"><button value="{{ panier.id}}" type="button" class="btn btn-danger">{% trans from "message" %}Supprimer{% endtrans %}</button></a></td>
                         <td>{% trans from "message" %}ajouté le {% endtrans %} {{ panier.dateajout|date('d/m/y') }}</td>
 
@@ -39,10 +39,19 @@
 
                 </tbody>
             </table>
-            <button type="button" class="btn btn-info btn-rounded ">{{ paniers|length }} {% trans from "message" %}produits dans le panier{% endtrans %}</button>
 
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
 
-        </div>
+                <th scope="row">{{quantite}} {% trans from "message" %}produits dans le panier{% endtrans %}</th>
+                <th scope="row">Montant du panier : {{ montant|number_format(2, '.', ',') }} €</th>
+                </tr>
+                </thead>
+            </table>
+
+            </div>
+
 
         <div class="col-4">
 
