@@ -11,22 +11,22 @@
                 <table class="table">
                     <thead class="thead-light">
                     <tr>
-                        <th scope="col">Photo</th>
-                        <th scope="col">Nom</th>
-                        <th scope="col">Quantité</th>
-                        <th scope="col">Prix</th>
-                        <th scope="col">Fiche Produit</th>
+                        <th scope="col">{% trans from "message" %}Photo{% endtrans %}</th>
+                        <th scope="col">{% trans from "message" %}Nom{% endtrans %}</th>
+                        <th scope="col">{% trans from "message" %}Quantité{% endtrans %}</th>
+                        <th scope="col">{% trans from "message" %}Prix{% endtrans %}</th>
+                        <th scope="col">{% trans from "message" %}Fiche Produit{% endtrans %}</th>
 
                     </tr>
                     </thead>
                     <tbody>
                     {% for produit in produits %}
                         <tr>
-                            <th scope="row"> <img src="{{ produit.photo }}"/> </th>
+                            <th scope="row"> <img src="{{ asset('assets/images/' ~ produit.photo) }}"/> </th>
                             <td>{{ produit.nom }}</td>
                             <td>{{ produit.quantite }}</td>
                             <td>{{ produit.prix }}</td>
-                            <td><a href="{{ path('ficheProduit', {id: produit.id}) }}"><button value="{{ produit.id}}" type="button" class="btn btn-primary">Voir</button></a></td>
+                            <td><a href="{{ path('ficheProduit', {id: produit.id}) }}"><button value="{{ produit.id}}" type="button" class="btn btn-primary">{% trans from "message" %}Voir{% endtrans %}</button></a></td>
 
                         </tr>
                     {% endfor %}
@@ -35,7 +35,7 @@
                 </table>
 
                 {% else %}
-                <p>Il n'y a aucun produit enregistré</p>
+                <p>{% trans from "message" %}Il n'y a aucun produit enregistré{% endtrans %}</p>
             {% endif %}
 
         </div>

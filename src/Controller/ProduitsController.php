@@ -124,10 +124,24 @@ class ProduitsController extends AbstractController
 
         $PanierRepository = $this->getDoctrine()->getRepository(Panier::class)->findAll();
 
+        /*Calcul du montant Panier */
+        $produitsRepository = $this->getDoctrine()->getRepository(Produit::class)->findAll() ;
+
+        $totalQuantite=0;
+        $totalMontant=0;
+
+        foreach ($PanierRepository as $panier){
+            $totalQuantite+= $panier->getQuantite();
+            $totalMontant+=$panier->getProduit()->getPrix();
+            $prix = $totalQuantite+$totalMontant;
+        }
+
 
         return $this->render('produits/index.html.twig', [
             'controller_name' => 'ProduitsController',
-            'paniers'=>$PanierRepository
+            'paniers'=>$PanierRepository,
+            'montant' =>$prix,
+            'quantite' =>  $totalQuantite
 
 
         ]);

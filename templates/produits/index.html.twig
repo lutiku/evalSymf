@@ -11,10 +11,10 @@
             <table class="table">
                 <thead >
                 <tr>
-                    <th scope="col">Nom</th>
-                    <th scope="col">Quantité commandée</th>
-                    <th scope="col">Montant</th>
-                    <th scope="col">Suppression produit</th>
+                    <th scope="col">{% trans from "message" %}Nom{% endtrans %}</th>
+                    <th scope="col">{% trans from "message" %}Quantité commandée{% endtrans %}</th>
+                    <th scope="col">{% trans from "message" %}Montant{% endtrans %}</th>
+                    <th scope="col">{% trans from "message" %}Suppression produit{% endtrans %}</th>
                     <th></th>
 
                 </tr>
@@ -27,9 +27,9 @@
                     <tr>
                         <th scope="row">{{ panier.produit.nom }}</th>
                         <td>{{ panier.quantite }}</td>
-                        <td>--</td>
-                        <td><a href="{{path("remove", {id: panier.id})}}"><button value="{{ panier.id}}" type="button" class="btn btn-danger">Supprimer</button></a></td>
-                        <td>ajouté le {{ panier.dateajout|date('d/m/y') }}</td>
+                        <td>{{ montant }}</td>
+                        <td><a href="{{path("remove", {id: panier.id})}}"><button value="{{ panier.id}}" type="button" class="btn btn-danger">{% trans from "message" %}Supprimer{% endtrans %}</button></a></td>
+                        <td>{% trans from "message" %}ajouté le {% endtrans %} {{ panier.dateajout|date('d/m/y') }}</td>
 
                     </tr>
 
@@ -39,7 +39,8 @@
 
                 </tbody>
             </table>
-            <button type="button" class="btn btn-info btn-rounded">{{ paniers|length }}</button>
+            <button type="button" class="btn btn-info btn-rounded ">{{ paniers|length }} {% trans from "message" %}produits dans le panier{% endtrans %}</button>
+
 
         </div>
 
@@ -51,8 +52,8 @@
     {% else %}
 <div class="container mt-5">
 
-    <p>Il n'y a pas encore de produits dans le panier</p>
-    <a href="{{ path('produits') }}"><button  type="button" class="btn btn-primary">Voir les Produits</button></a>
+    <p>{% trans from "message" %}Il n'y a pas encore de produits dans le panier{% endtrans %}</p>
+    <a href="{{ path('produits') }}"><button  type="button" class="btn btn-primary">{% trans from "message" %}Voir les Produits{% endtrans %}</button></a>
 
 </div>
     {% endif %}

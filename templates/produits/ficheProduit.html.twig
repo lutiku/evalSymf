@@ -16,7 +16,7 @@
             <div class="card">
 
                 <!-- Card image -->
-                <img class="card-img-top" src="{{ produit.photo }}" alt="Card image cap">
+                <img class="card-img-top" src="{{ asset('assets/images/' ~ produit.photo) }}" alt="Card image cap">
 
                 <!-- Card content -->
                 <div class="card-body">
@@ -24,15 +24,17 @@
                     <!-- Title -->
                     <h4 class="card-title"><a></a></h4>
                     <!-- Text -->
-                    <p class="card-text">Il y'a {{ produit.quantite }} {% if produit|length < 1 %}produit{% else %} produits {% endif %}en stock</p>
-                    <p class="card-text">Son prix unitaire est de {{ produit.prix|number_format(2, '.', ',') }} €</p>
+                    <p class="card-text">Il y'a {{ produit.quantite }} {% if produit|length < 1 %}{% trans from "message" %}produit{% endtrans %}{% else %} {% trans from "message" %} produits {% endtrans %} {% endif %}{% trans from "message" %}en stock{% endtrans %}</p>
+                    <p class="card-text">{% trans from "message" %}Son prix unitaire est de {% endtrans %} {{ produit.prix|number_format(2, '.', ',') }} €</p>
                     <!-- Button -->
-                    <a href="{{path("removeProduits", {id: produit.id})}}"><button value="{{ produit.id}}" type="button" class="btn btn-danger">Supprimer</button></a>
+                    <a href="{{path("removeProduits", {id: produit.id})}}"><button value="{{ produit.id}}" type="button" class="btn btn-danger">{% trans from "message" %}Supprimer{% endtrans %}</button></a>
 
                 </div>
 
             </div>
             <!-- Card -->
+
+
         </div>
 
     {% endif %}
