@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab52a5dd-d5ea-4799-acee-ad5ad3f30945" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/procfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/prod/monolog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/prod/monolog.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -165,7 +165,7 @@
       <option name="presentableId" value="Default" />
       <updated>1584115362307</updated>
       <workItem from="1584115364349" duration="41268000" />
-      <workItem from="1585143905432" duration="443000" />
+      <workItem from="1585143905432" duration="793000" />
     </task>
     <servers />
   </component>
