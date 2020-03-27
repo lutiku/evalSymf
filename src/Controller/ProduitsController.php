@@ -118,7 +118,7 @@ class ProduitsController extends AbstractController
 
 
     /**
-     * @Route("/accueil", name="accueil")
+     * @Route("/", name="accueil")
      */
     public function index()
     {
