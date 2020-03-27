@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class DeploiementController extends AbstractController
 {
     /**
-     * @Route("/", name="deploiement")
+     * @Route("/deploiement", name="deploiement")
      */
     public function index()
     {
